@@ -1,0 +1,27 @@
+{
+  "name": "social_media_backend",
+  "version": "1.0.0",
+  "description": "Backend code for a social media application ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "backend",
+    "nodejs",
+    "expressjs",
+    "mongodb",
+    "logic",
+    "backend_development"
+  ],
+  "author": "Satabrata Paul",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "helmet": "^5.1.0",
+    "mongoose": "^6.3.6",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.16"
+  }
+}
