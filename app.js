@@ -4,6 +4,8 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const userRoute = require('./routes/users')
+const authRoute = require('./routes/auth');
+const { application } = require('express');
 
 //Establishing connection to mongodb database
 mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true}, ()=>{
@@ -19,6 +21,7 @@ app.use(helmet());
 app.use(morgan());
 
 app.use('/api/users', userRoute)
+app.use('/api/auth', authRoute)
 
 
 //Starting the express application
