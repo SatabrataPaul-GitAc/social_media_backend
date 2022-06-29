@@ -1,17 +1,27 @@
-const router = require("express").Router()
-const User = require('../models/User')
+const router = require("express").Router();
+const User = require('../models/User');
+const bcrypt = require('bcrypt');
+
+
+//Function to generate hashed password
+async function generateHash(password){
+    const salt = await bcrypt.genSalt(16);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    return hashedPassword
+}
+
 
 //REGISTER A USER
 router.post("/register", async (req, res)=>{
     const body = req.body;
     if (!body.username){
-        res.status(400).json({message: "username is missing"})
+        res.status(400).json({message: "username is missing"});
     }
     if (!body.email){
-        res.status(400).json({message: "Email address is missing"})
+        res.status(400).json({message: "Email address is missing"});
     }
     if (!body.password){
-        res.status(400).json({message: "Password is missing"})
+        res.status(400).json({message: "Password is missing"});
     }
     const password = body.password;
     const newUser = User({
