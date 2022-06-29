@@ -23,7 +23,13 @@ router.post("/register", async (req, res)=>{
     if (!body.password){
         res.status(400).json({message: "Password is missing"});
     }
-    const password = body.password;
+
+    const user = User.findOne({email: body.email})
+    if (user){
+        res.status(400).json({message: "User already exists"})
+    }
+
+    const password = await generateHash(body.password)
     const newUser = User({
         userName: body.username,
         email: body.email,
