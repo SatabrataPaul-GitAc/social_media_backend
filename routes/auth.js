@@ -24,7 +24,7 @@ router.post("/register", async (req, res)=>{
         res.status(400).json({message: "Password is missing"});
     }
 
-    const user = User.findOne({email: body.email})
+    const user = await User.findOne({email: body.email})
     if (user){
         res.status(400).json({message: "User already exists"})
     }
@@ -33,7 +33,7 @@ router.post("/register", async (req, res)=>{
     const newUser = User({
         userName: body.username,
         email: body.email,
-        password: password,
+        password: password
     })
 
     try {
